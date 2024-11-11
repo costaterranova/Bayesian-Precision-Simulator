@@ -8,7 +8,7 @@ import app as a
 
 
 uploaded_file = st.file_uploader(
-    "Choose a CSV file. It needs to have a column called' Verdict' and a column called 'date", accept_multiple_files=False)
+    "Choose a CSV file. It needs to have a column called' Verdict' and a column called 'date", accept_multiple_files=False, key =1)
 
 if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
