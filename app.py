@@ -331,7 +331,7 @@ with cg:
 if sample_size_explorator:
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
-    for sample in range(1,100):
+    for sample in range(10,100):
         my_bar.progress(sample + 1, text=progress_text)
         average_difference, pred_slope, r_squared = metric_simulator(sample_size_selected=sample, approach_selected = approach, weeks= number_of_weeks)
         avg_diffs.append(average_difference)
@@ -348,7 +348,7 @@ if sample_size_explorator:
     ax1.plot(samples, avg_diffs, label="Width of CI", color='b', marker='o')
     ax1.set_xlabel("Number of Samples")
     ax1.set_ylabel("Width of CI", color='b')
-    ax1.set_ylim(0, 1)  # Range for avg_diffs
+    ax1.set_ylim(0, 0.6)  # Range for avg_diffs
     ax1.tick_params(axis='y', labelcolor='b')
     ax1.grid(True)
     ax1.set_xticks([10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
@@ -367,7 +367,7 @@ if sample_size_explorator:
     ax3.spines['right'].set_position(('outward', 60))  # Offset the third axis to the right
     ax3.plot(samples, r_squareds, label="Confidence in Slope", color='r', marker='^')
     ax3.set_ylabel("Confidence in Slope", color='r')
-    ax3.set_ylim(0, 0.2)  # Range for r_squareds
+    ax3.set_ylim(0, 0.5)  # Range for r_squareds
     ax3.tick_params(axis='y', labelcolor='r')
 
     # Add legends for each y-axis
@@ -411,7 +411,7 @@ if approach_explorator:
     ax1.bar(x - bar_width, avg_diffs, width=bar_width, label="Width of CI", color='b')
     ax1.set_xlabel("Approach Type")
     ax1.set_ylabel("Width of CI", color='b')
-    ax1.set_ylim(0, 1)  # Range for avg_diffs
+    ax1.set_ylim(0, 0.6)  # Range for avg_diffs
     ax1.tick_params(axis='y', labelcolor='b')
     ax1.set_xticks(x)
     ax1.set_xticklabels(approaches)
@@ -431,7 +431,7 @@ if approach_explorator:
     # Plot r_squareds (Confidence in Slope) on ax3
     ax3.bar(x + bar_width, r_squareds, width=bar_width, label="Confidence in Slope", color='r')
     ax3.set_ylabel("Confidence in Slope", color='r')
-    ax3.set_ylim(0, 0.3)  # Range for r_squareds
+    ax3.set_ylim(0, 0.5)  # Range for r_squareds
     ax3.tick_params(axis='y', labelcolor='r')
 
     # Add legends for each y-axis
@@ -440,7 +440,7 @@ if approach_explorator:
     ax3.legend(loc="lower right")
 
     # Add title
-    plt.title("Metrics vs Number of Samples")
+    plt.title("Metrics by Approach")
 
     # Show the plot in Streamlit
     st.pyplot(fig)
