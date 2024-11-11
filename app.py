@@ -7,6 +7,7 @@ from sklearn.linear_model import LinearRegression
 import app as a
 
 
+st.warning('Do not share anything more than date and verdict', icon="⚠️")
 uploaded_file = st.file_uploader(
     "Choose a CSV file. It needs to have a column called' Verdict' and a column called 'date", accept_multiple_files=False, key =1)
 
